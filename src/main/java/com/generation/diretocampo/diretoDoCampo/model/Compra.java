@@ -21,7 +21,7 @@ public class Compra {
 	@ManyToOne
 	private Produto produto;
 	
-	@OneToMany
+	@ManyToOne
 	private Usuario usuario;
 	
 	@NotNull

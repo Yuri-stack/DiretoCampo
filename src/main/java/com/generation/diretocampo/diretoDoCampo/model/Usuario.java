@@ -42,7 +42,7 @@ public class Usuario {
 	@Size(max = 20)
 	private String tipo; // Produtor, Consumidor, Ponto de Revenda ou Admin
 	
-	@OneToMany (mappedBy = "usuario", cascade = CascadeType.ALL)
+	@OneToMany (mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
 	private List<Produto> produto;
 
