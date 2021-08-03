@@ -10,43 +10,44 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@Entity
-@Table(name = "produto")
+@Entity							// Anotação que cria uma tabela com os atributos da classe
+@Table(name = "tb_produto")		// Anotação que cria nomea a tabela
 public class Produto {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Id														// Criando uma chave primária
+	@GeneratedValue(strategy = GenerationType.IDENTITY)		// Auto_Increment (1, 2, 3 ....)
+	private long id;										// Criando uma coluna chamada ID do tipo bitInt
 
-	@NotNull
-	@Size(max = 50)
+	@NotNull				
+	@Size(max = 50, message = "Valor minimo de 1 caracter e máximo 50")
 	private String nome;
 	
 	@NotNull
-	@Size(max = 200)
+	@Size(max = 200, message = "Valor minimo de 1 caracter e máximo 200")
 	private String descricao;
 	
 	@NotNull
-	@Size(max = 50)
+	@Size(max = 50, message = "Valor minimo de 1 caracter e máximo 50")
 	private String categoria;	// Populado por uma Caixa de Combinação no Front
 	
 	@NotNull
-	@Size(max = 10)
+	@Size(max = 10, message = "Valor minimo de 1 caracter e máximo 10")
 	private float preco;
 	
 	@NotNull
-	@Size(max = 4)
+	@Size(max = 4, message = "Valor minimo de 1 caracter e máximo 4")
 	private float quantidade;
 	
-	@NotNull
-	private boolean status;		//	Se o produto está disponivel
+	@NotBlank					// Não aceita Nulo ou " "
+	private boolean status;		// Se o produto está disponivel
 	
-	@NotNull
+	@NotBlank
 	private String imagem;
 	
 	@ManyToOne

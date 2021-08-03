@@ -7,16 +7,17 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@Entity
-@Table(name = "compra")
+@Entity							
+@Table(name = "tb_compra")		
 public class Compra {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Id													
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+	private long id;									
 	
 	@ManyToOne
 	private Produto produto;
@@ -25,14 +26,14 @@ public class Compra {
 	private Usuario usuario;
 	
 	@NotNull
-	@Size(max = 10)
+	@Size(max = 10, message = "Valor minimo de 1 caracter e máximo 10")
 	private float precoTotal;
 	
 	@NotNull
-	@Size(max = 4)
+	@Size(max = 4, message = "Valor minimo de 1 caracter e máximo 4")
 	private float quantidade;
 	
-	@NotNull
+	@NotBlank
 	private boolean status;		// Vendido ou não
 
 	public Long getId() {

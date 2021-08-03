@@ -15,32 +15,32 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "tb_usuario")
 public class Usuario {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private long id;
 	
 	@NotNull
-	@Size(max = 50)
+	@Size(max = 50, message = "Valor minimo de 1 caracter e máximo 50")
 	private String nome;
 	
 	@NotNull
-	@Size(max = 50)
+	@Size(max = 50, message = "Valor minimo de 1 caracter e máximo 50")
 	private String email;
 	
 	@NotNull
-	@Size(max = 10)
+	@Size(max = 10, message = "Valor minimo de 1 caracter e máximo 10")
 	private String senha;
 	
 	@NotNull
-	@Size(max = 9)
+	@Size(max = 9, message = "Valor minimo de 1 caracter e máximo 9")
 	private String cep;
 	
 	@NotNull
-	@Size(max = 20)
-	private String tipo; // Produtor, Consumidor, Ponto de Revenda ou Admin
+	@Size(max = 20, message = "Valor minimo de 1 caracter e máximo 20")
+	private String tipo; 			// Produtor, Consumidor, Ponto de Revenda ou Admin
 	
 	@OneToMany (mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
