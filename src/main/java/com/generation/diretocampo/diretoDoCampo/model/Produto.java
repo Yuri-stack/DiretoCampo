@@ -31,7 +31,7 @@ public class Produto {
 	@NotNull
 	@Size(max = 200, message = "Valor minimo de 1 caracter e máximo 200")
 	private String descricao;
-	    
+	       
 	@NotNull
 	@Size(max = 50, message = "Valor minimo de 1 caracter e máximo 50")
 	private String categoria;	// Populado por uma Caixa de Combinação no Front
