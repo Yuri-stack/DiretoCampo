@@ -1,15 +1,18 @@
 package com.generation.diretocampo.diretoDoCampo.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity							
 @Table(name = "tb_compra")		
@@ -17,67 +20,78 @@ public class Compra {
 
 	@Id													
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
-	private long id;									
-	
+	private long id;		
+		
 	@ManyToOne
-	private Produto produto;
-	
-	@ManyToOne
+	@JsonIgnoreProperties("produto")
 	private Usuario usuario;
 	
-	@NotNull
-	@Size(max = 10, message = "Valor minimo de 1 caracter e máximo 10")
+	@ManyToOne
+	@JsonIgnoreProperties("usuario")
+	private Produto produto;
+					
+	@NotNull(message = "Esse campo não pode ser nulo")
 	private float precoTotal;
 	
-	@NotNull
-	@Size(max = 4, message = "Valor minimo de 1 caracter e máximo 4")
+	@UpdateTimestamp
+	private LocalDate dataCompra;
+	
+	@NotNull(message = "Esse campo não pode ser nulo")
 	private float quantidade;
 	
-	@NotBlank
+	@NotNull
 	private boolean status;		// Vendido ou não
 
-	public Long getId() {
+	public long getId() {
 		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Produto getProduto() {
-		return produto;
-	}
-
-	public void setProduto(Produto produto) {
-		this.produto = produto;
 	}
 
 	public Usuario getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public Produto getProduto() {
+		return produto;
 	}
 
 	public float getPrecoTotal() {
 		return precoTotal;
 	}
 
-	public void setPrecoTotal(float precoTotal) {
-		this.precoTotal = precoTotal;
+	public LocalDate getDataCompra() {
+		return dataCompra;
 	}
 
 	public float getQuantidade() {
 		return quantidade;
 	}
 
-	public void setQuantidade(float quantidade) {
-		this.quantidade = quantidade;
-	}
-
 	public boolean isStatus() {
 		return status;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
+
+	public void setPrecoTotal(float precoTotal) {
+		this.precoTotal = precoTotal;
+	}
+
+	public void setDataCompra(LocalDate dataCompra) {
+		this.dataCompra = dataCompra;
+	}
+
+	public void setQuantidade(float quantidade) {
+		this.quantidade = quantidade;
 	}
 
 	public void setStatus(boolean status) {
