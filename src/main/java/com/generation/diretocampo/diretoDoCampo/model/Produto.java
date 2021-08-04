@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity							// Anotação que cria uma tabela com os atributos da classe
 @Table(name = "tb_produto")		// Anotação que cria nomea a tabela
 public class Produto {
-
+  
 	@Id														// Criando uma chave primária
 	@GeneratedValue(strategy = GenerationType.IDENTITY)		// Auto_Increment (1, 2, 3 ....)
 	private long id;										// Criando uma coluna chamada ID do tipo bitInt
