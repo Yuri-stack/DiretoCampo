@@ -36,18 +36,16 @@ public class Produto {
 	@Size(max = 50, message = "Valor minimo de 1 caracter e máximo 50")
 	private String categoria;	// Populado por uma Caixa de Combinação no Front
 	
-	@NotNull
-	@Size(max = 10, message = "Valor minimo de 1 caracter e máximo 10")
+	@NotNull(message = "Esse campo não pode ser nulo")
 	private float preco;
 	
-	@NotNull
-	@Size(max = 4, message = "Valor minimo de 1 caracter e máximo 4")
+	@NotNull(message = "Esse campo não pode ser nulo")
 	private float quantidade;
 	
-	@NotBlank					// Não aceita Nulo ou " "
+	@NotNull					
 	private boolean status;		// Se o produto está disponivel
 	
-	@NotBlank
+	@NotBlank					// Não aceita Nulo ou " "
 	private String imagem;
 	
 	@ManyToOne
