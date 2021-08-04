@@ -42,7 +42,7 @@ public class ProdutoController {
 	}
 	
 	// Rota que é acessada quando queremos BUSCAR todos produtos com certo Nome
-	@GetMapping("/produto/{nome}")	
+	@GetMapping("/nome/{nome}")	
 	public ResponseEntity<List<Produto>> getById(@PathVariable String nome){
 		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 	}

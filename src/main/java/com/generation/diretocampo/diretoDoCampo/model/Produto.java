@@ -47,92 +47,91 @@ public class Produto {
 	
 	@NotBlank					// Não aceita Nulo ou " "
 	private String imagem;
-	
+			
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date data = new java.sql.Date(System.currentTimeMillis());
+		
 	@ManyToOne
 	@JsonIgnoreProperties("produto")
 	private Usuario usuario;
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date data = new java.sql.Date(System.currentTimeMillis());
 
-	// Métodos Get e Set
-	public Long getId() {
+	public long getId() {
 		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getNome() {
 		return nome;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
 	public String getDescricao() {
 		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
 	}
 
 	public String getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
-	}
-
 	public float getPreco() {
 		return preco;
-	}
-
-	public void setPreco(float preco) {
-		this.preco = preco;
 	}
 
 	public float getQuantidade() {
 		return quantidade;
 	}
 
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
-	}
-
 	public boolean isStatus() {
 		return status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
 	}
 
 	public String getImagem() {
 		return imagem;
 	}
 
-	public void setImagem(String imagem) {
-		this.imagem = imagem;
+	public Date getData() {
+		return data;
 	}
 
 	public Usuario getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setId(long id) {
+		this.id = id;
 	}
 
-	public Date getData() {
-		return data;
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
+	public void setPreco(float preco) {
+		this.preco = preco;
+	}
+
+	public void setQuantidade(float quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
 	}
 
 	public void setData(Date data) {
 		this.data = data;
-	} 	
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 }

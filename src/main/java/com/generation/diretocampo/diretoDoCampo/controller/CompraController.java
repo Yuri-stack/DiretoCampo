@@ -44,16 +44,10 @@ public class CompraController {
 				.body(repository.save(compra));
 	}
 	
+	// Implementação Futura
 	@PutMapping
 	public ResponseEntity<Compra> put(@Valid @RequestBody Compra compra){
 		return ResponseEntity.status(HttpStatus.OK)
 				.body(repository.save(compra));
 	}
-	
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	@DeleteMapping("/{id}")
-	public void delete(@PathVariable long id) {
-		repository.deleteById(id);
-	}	
-	
 }

@@ -38,9 +38,9 @@ public class UsuarioController {
 				.orElse(ResponseEntity.notFound().build());
 	}
 
-	@GetMapping("/nome/{nome}")
-	public ResponseEntity<List<Usuario>> getByNome(@PathVariable String nome) {
-		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
+	@GetMapping("/email/{email}")
+	public ResponseEntity<List<Usuario>> getByNome(@PathVariable String email) {
+		return ResponseEntity.ok(repository.findAllByEmailContainingIgnoreCase(email));
 	}
 
 	@PostMapping
