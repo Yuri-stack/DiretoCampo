@@ -117,4 +117,12 @@ public class Usuario {
 	public void setCompra(List<Compra> compra) {
 		this.compra = compra;
 	}
+
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
 }
