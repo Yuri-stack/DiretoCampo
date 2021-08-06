@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -41,6 +42,9 @@ public class Usuario {
 	@NotNull
 	@Size(max = 20, message = "Valor minimo de 1 caracter e máximo 20")
 	private String tipo; 			// Produtor, Consumidor, Ponto de Revenda ou Admin
+	
+	@NotBlank					// Não aceita Nulo ou " "
+	private String imagem;
 	
 	@OneToMany (mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
@@ -112,5 +116,5 @@ public class Usuario {
 
 	public void setCompra(List<Compra> compra) {
 		this.compra = compra;
-	}	
+	}
 }
