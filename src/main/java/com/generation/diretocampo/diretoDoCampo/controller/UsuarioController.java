@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,7 @@ import com.generation.diretocampo.diretoDoCampo.repository.UsuarioRepository;
 
 @RestController
 @RequestMapping("/usuarios")
+@CrossOrigin(value = "*", allowedHeaders = "*")
 public class UsuarioController {
 
 	@Autowired
@@ -39,8 +41,8 @@ public class UsuarioController {
 	}
 
 	@GetMapping("/email/{email}")
-	public ResponseEntity<List<Usuario>> getByNome(@PathVariable String email) {
-		return ResponseEntity.ok(repository.findAllByEmailContainingIgnoreCase(email));
+	public ResponseEntity<Usuario> getByNome(@PathVariable String email) {
+		return ResponseEntity.ok(repository.findByEmailContainingIgnoreCase(email));
 	}
 
 	@PostMapping

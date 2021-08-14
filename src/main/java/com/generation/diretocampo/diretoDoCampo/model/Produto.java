@@ -41,8 +41,7 @@ public class Produto {
 	
 	@NotNull(message = "Esse campo não pode ser nulo")
 	private float quantidade;
-	
-	@NotNull					
+				
 	private boolean status;		// Se o produto está disponivel
 	
 	@NotBlank					// Não aceita Nulo ou " "
